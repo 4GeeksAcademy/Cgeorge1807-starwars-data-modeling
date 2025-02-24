@@ -51,8 +51,7 @@ class Favorites(Base):
 
     
     
-def to_dict(self):
-    return {}
+
 
 # Draw from SQLAlchemy base
 try:
