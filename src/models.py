@@ -17,16 +17,16 @@ class User(Base):
     firstname = Column(String(250), nullable=False)
     lastname = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
-    id_planet = Column(Integer, ForeignKey('planets.id'))
-    planets = relationship("Planets")
+    id_planet = Column(Integer, ForeignKey('planet.id'))
+    planet = relationship("Planets")
 
 class Planets(Base):
-    __tablename__ = 'planets'
+    __tablename__ = 'planet'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     diameter = Column(Integer, nullable=False)
     climate = Column(String(250), nullable=False)
-    users = relationship("User", back_populates="planets")
+    users = relationship("User", back_populates="planet")
 
 class People(Base):
     __tablename__ = 'people'
@@ -36,8 +36,8 @@ class People(Base):
     skin_color = Column(String(250), nullable=False)
     hair_color = Column(String(250), nullable=False)
     eye_color = Column(String(250), nullable=False)
-    planets_id = Column(Integer, ForeignKey('planets.id'))
-    planets = relationship("Planets")    
+    planets_id = Column(Integer, ForeignKey('planet.id'))
+    planet = relationship("Planets")    
 
 class Favorites(Base):
     __tablename__ = 'favorites'
@@ -46,8 +46,8 @@ class Favorites(Base):
     user = relationship("User") 
     id_people = Column(Integer, ForeignKey('people.id'))
     people = relationship("People")     
-    id_planets = Column(Integer, ForeignKey('planets.id'))
-    planets = relationship("Planets")
+    id_planets = Column(Integer, ForeignKey('planet.id'))
+    planet = relationship("Planets")
 
     
     
